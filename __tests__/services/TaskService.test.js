@@ -1,9 +1,10 @@
 const mongoose = require('mongoose');
 const TaskService = require('../../services/TaskService');
 const Task = require('../../models/Task');
+const config = require('../../config/config');
 
 beforeAll(async () => {
-  await mongoose.connect('mongodb://localhost:27017/test-db', {
+  await mongoose.connect(config.database.uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   });

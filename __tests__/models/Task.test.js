@@ -1,9 +1,10 @@
 const Task = require('../../models/Task');
 const mongoose = require('mongoose');
+const config = require('../../config/config');
 
 describe('Task Model', () => {
   beforeEach(async () => {
-    await mongoose.connect('mongodb://localhost:27017/test-db', {
+    await mongoose.connect(config.database.uri, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });

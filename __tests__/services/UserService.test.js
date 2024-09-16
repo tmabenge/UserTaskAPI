@@ -13,7 +13,7 @@ jest.mock('bcrypt', () => ({
 
 
 beforeAll(async () => {
-  await mongoose.connect('mongodb://localhost:27017/test-db', {
+  await mongoose.connect(config.database.uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   });

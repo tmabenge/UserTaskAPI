@@ -1,10 +1,11 @@
 const User = require('../../models/User');
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+const config = require('../../config/config');
 
 describe('User Model', () => {
   beforeEach(async () => {
-    await mongoose.connect('mongodb://localhost:27017/test-db', {
+    await mongoose.connect(config.database.uri, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
