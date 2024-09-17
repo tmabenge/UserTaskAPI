@@ -44,7 +44,7 @@ This repository contains a Node.js application designed to manage users and thei
    ```
 
 5. **Set Up Environment Variables:**
-   - Create a `.env`  `.env.test` file in the root directory and configure the following variables:
+   - Create a `.env` file in the root directory and configure the following variables:
      ```
      MONGODB_URI=mongodb://localhost:27017/your-db-name
      JWT_SECRET=your-secret-key
