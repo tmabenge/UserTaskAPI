@@ -61,6 +61,11 @@ This repository contains a Node.js application designed to manage users and thei
 
 8. **Scheduled Job:**
    - The application includes a daily scheduled job to cancel overdue tasks.
+  
+9. **Run individual test suite e.g:**
+    ```bash
+   npm test __tests__/services/UserService.test.js
+   ```
 
 9. **Future Developments:**
    - Notifications (Strategy Pattern): Implement a notification system using a strategy pattern for flexible delivery of:
