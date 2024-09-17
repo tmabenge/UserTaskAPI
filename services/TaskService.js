@@ -89,7 +89,7 @@ class TaskService {
     }
   }
 
-  async cancelNotCompletedTasks() {
+  async markOverdueTasksAsCancelled() {
     const now = new Date();
     const pendingTasks = await Task.find({ 
       status: 'Pending', 

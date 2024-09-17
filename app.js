@@ -7,10 +7,9 @@ const taskRoutes = require('./routes/taskRoutes');
 const authenticateToken = require('./middleware/authenticateToken');
 const swaggerConfig = require('./config/swagger');
 const swaggerUi = require('swagger-ui-express');
+const TaskService = require('./services/TaskService');
 
 const app = express();
-const port = process.env.PORT || 3000;
-
 
 mongoose.connect(config.database.uri, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('Connected to MongoDB'))
@@ -29,15 +28,11 @@ const rule = new schedule.RecurrenceRule();
 rule.minute = new schedule.Range(0, 59, 1); 
 schedule.scheduleJob(rule, async () => {
   try {
-    await taskService.cancelNotCompletedTasks(); 
-    console.log('Cancelled tasks updated.');
+    await TaskService.markOverdueTasksAsCancelled(); 
+    console.log(`[${new Date().toISOString()}] Cancelled overdue tasks.`);
   } catch (err) {
-    console.error('Error updating tasks:', err);
+    console.error('Error marking overdue tasks as cancelled:', err);
   }
-});
-
-app.listen(port, () => {
-  console.log(`Server listening on port ${port}`);
 });
 
 module.exports = app
